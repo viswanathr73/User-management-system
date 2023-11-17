@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>user_management</title>
+   <link rel="shortcut icon" href="styles\images\favicon1.png" type="image/x-icon">
+   <link rel="stylesheet" href="/styles/adminDashboard.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+   <section>
+      <h1> Dashboard</h1>
+      <div class="button-container d-flex justify-content-end align-items-center mb-2">
+      <form action="/admin/searchUser" method="post" class="form-inline">
+         
+          
+          <div class="input-container">
+            <input type="search" class="styled-input" name="name" placeholder="Search">
+         
+
+            <button class="btn btn-success me-2" type="submit">Search</button>
+         </div>
+      </form>
+     
+         <form action="/admin/newUser" class="d-inline-block">
+            <button class="btn btn-info me-2">Add User</button>
+         </form>
+         <form action="/admin/home" class="d-inline-block">
+            <button class="btn btn-danger">Go Back</button>
+         </form>
+      </div>
+      <div class="table-responsive">
+         <table class="table table-bordered">
+          <thead>
+            <tr>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Mobile</th>
+               <th>Edit</th>
+               <th>Delete</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% if(users.length > 0) { %>
+               <% for (let i = 0; i < users.length; i++) { %>
+                  <tr>
+                     <td><%- users[i].name %></td>
+                     <td><%- users[i].email %></td>
+                     <td><%- users[i].mobile %></td>
+                     <td>
+                        <a class="btn btn-info" href="/admin/editUser?id=<%- users[i]._id %>">Edit</a>
+                     </td>
+                     <td>
+                        <a class="btn btn-danger" href="/admin/deleteUser?id=<%- users[i]._id %>">Delete</a>
+                     </td>
+                  </tr>
+               <% } %>           
+            <% } else { %>  
+               <tr>
+                  <td colspan="5"><h1 class="not-found">Users not found</h1></td>
+               </tr>
+            <% } %>
+         </tbody>
+         </table>
+      </div>
+   </section>
+  </div>
+</body>
+</html>

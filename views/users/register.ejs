@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>user_management</title>
+      <link rel="shortcut icon" href="styles\images\favicon.png" type="image/x-icon">
+      <link rel="stylesheet" href="/styles/register.css">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title">
+         Sign Up
+         </div>
+         <form action="/register" method="post" onsubmit="return validate()">
+          <div class="field">
+            <input type="text" name="name" id="name" >
+            <label>Name  </label>
+            
+         </div>
+            <div class="field">
+               <input type="text" name="email" id="email">
+               <label>Email Address</label>
+              
+            </div>
+            <div class="field">
+              <input type="text" name="mobile" id="mobile">
+              <label>Mobile No.</label>
+             
+           </div>
+            <div class="field">
+               <input type="password" name="password" id="password" >
+               <label>Password</label>
+              
+            </div>
+           
+            <div class="field">
+               <input type="submit" value="Register">
+            </div>
+            <% if (message) { %>
+               <div class="alert-message" role="alert">
+                   <%- message %>
+               </div>
+             <% } %>
+           
+           <% if (errMessage) { %>
+               <div  class="alert-message" role="alert" >
+                   <%- errMessage %>
+               </div>
+           <% } %>
+           <p id="ErrorMessage" class="alert-message" ></p>
+            <div class="signup-link">
+               Already a member? <a href="/login">Signin now</a>
+            </div>
+         </form>
+      </div>
+    <script src="/js/userRegisterValidation.js"></script>
+
+   </body>
+</html>
